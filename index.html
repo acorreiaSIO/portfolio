@@ -282,10 +282,11 @@
   .real-card {
     background: var(--bg3); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 32px;
-    box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     display: flex; flex-direction: column; gap: 16px;
+    min-height: 210px;
   }
-  .real-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.1); }
+  .real-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.1); border-color: var(--accent); }
   .real-header { display: flex; justify-content: space-between; align-items: flex-start; }
   .real-num {
     font-family: var(--mono); font-size: 11px; font-weight: 700;
@@ -458,16 +459,16 @@
       <div class="stat-label">En entreprise</div>
     </div>
     <div class="stat">
-      <div class="stat-val">5</div>
+      <div class="stat-val">8</div>
       <div class="stat-label">Stages réalisés</div>
     </div>
     <div class="stat">
-      <div class="stat-val">AD<span>/Win/Lin</span></div>
-      <div class="stat-label">Systèmes maîtrisés</div>
+      <div class="stat-val">Bac<span> Pro</span></div>
+      <div class="stat-label">SN option RISC — Mention Bien</div>
     </div>
     <div class="stat">
-      <div class="stat-val">N1<span>+</span></div>
-      <div class="stat-label">Support utilisateurs</div>
+      <div class="stat-val">BTS<span> SIO</span></div>
+      <div class="stat-label">Option SISR — 2ème année</div>
     </div>
   </div>
 </section>
@@ -754,88 +755,59 @@
     <div class="container">
       <div class="section-header">
         <div class="section-num">03 — Réalisations</div>
-        <h2 class="section-title">Situations<br>professionnelles</h2>
-        <p class="section-sub">Fiches AP (Activités Professionnelles) et PPE (Projet Personnel Encadré) documentant les missions techniques significatives réalisées en stage.</p>
+        <h2 class="section-title">Activités<br>Professionnelles</h2>
+        <p class="section-sub">Situations professionnelles réalisées en stage. Cliquez sur une AP pour accéder aux documents associés.</p>
       </div>
 
       <div class="realisations-grid">
 
-        <!-- AP 1 -->
-        <div class="real-card reveal">
+        <a class="real-card reveal" href="https://github.com/Dreguel/portfolio/tree/main/AP/AP3.1%20GpoPu" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
           <div class="real-header">
-            <span class="real-num">AP — 01</span>
-            <span class="real-type chip chip-blue">Administration</span>
+            <span class="real-num">AP — 3.1</span>
+            <span class="real-type chip chip-blue">Voir les documents ↗</span>
           </div>
-          <div class="real-title">Gestion des comptes et droits Active Directory — Eovest</div>
-          <div class="real-context">Création, modification et désactivation de comptes utilisateurs dans Active Directory. Gestion des groupes de sécurité et des GPO pour configurer les environnements de travail.</div>
-          <div class="real-skills">
-            <span class="skill-tag">Active Directory</span>
-            <span class="skill-tag">Windows Server</span>
-            <span class="skill-tag">GPO</span>
-            <span class="skill-tag">LDAP</span>
+          <div class="real-title">GpoPu</div>
+          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/Dreguel/portfolio
           </div>
-        </div>
+        </a>
 
-        <!-- AP 2 -->
-        <div class="real-card reveal">
+        <a class="real-card reveal" href="https://github.com/Dreguel/portfolio/tree/main/AP/AP3.2%20Navajo" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
           <div class="real-header">
-            <span class="real-num">AP — 02</span>
-            <span class="real-type chip chip-gray">Gestion de parc</span>
+            <span class="real-num">AP — 3.2</span>
+            <span class="real-type chip chip-blue">Voir les documents ↗</span>
           </div>
-          <div class="real-title">Inventaire et préparation de postes — intégration collaborateurs</div>
-          <div class="real-context">Inventaire exhaustif du parc informatique, mise à jour de la CMDB, et préparation technique des postes pour l'arrivée de nouveaux employés (masterisation, logiciels, périphériques).</div>
-          <div class="real-skills">
-            <span class="skill-tag">GLPI / OCS</span>
-            <span class="skill-tag">Masterisation</span>
-            <span class="skill-tag">Déploiement</span>
-            <span class="skill-tag">Documentation</span>
+          <div class="real-title">Navajo</div>
+          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/Dreguel/portfolio
           </div>
-        </div>
+        </a>
 
-        <!-- AP 3 -->
-        <div class="real-card reveal">
+        <a class="real-card reveal" href="https://github.com/Dreguel/portfolio/tree/main/AP/AP4.1%20DMZ" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
           <div class="real-header">
-            <span class="real-num">AP — 03</span>
-            <span class="real-type chip chip-red">Sécurité</span>
+            <span class="real-num">AP — 4.1</span>
+            <span class="real-type chip chip-blue">Voir les documents ↗</span>
           </div>
-          <div class="real-title">Dépannage malwares et mise en place de sauvegardes — PC Center 33</div>
-          <div class="real-context">Analyse de postes infectés, suppression sécurisée des malwares, remise en état du système, et déploiement d'une solution de sauvegarde locale et distante pour les données critiques.</div>
-          <div class="real-skills">
-            <span class="skill-tag">Antimalware</span>
-            <span class="skill-tag">Sauvegarde</span>
-            <span class="skill-tag">Windows</span>
-            <span class="skill-tag">Sécurité</span>
+          <div class="real-title">DMZ</div>
+          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/Dreguel/portfolio
           </div>
-        </div>
+        </a>
 
-        <!-- AP 4 -->
-        <div class="real-card reveal">
+        <a class="real-card reveal" href="https://github.com/Dreguel/portfolio/tree/main/AP/AP4.2%20Invincible" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
           <div class="real-header">
-            <span class="real-num">AP — 04</span>
-            <span class="real-type chip chip-green">Déploiement</span>
+            <span class="real-num">AP — 4.2</span>
+            <span class="real-type chip chip-blue">Voir les documents ↗</span>
           </div>
-          <div class="real-title">Masterisation et configuration de postes clients — Spoc-it</div>
-          <div class="real-context">Création d'une image système et déploiement sur plusieurs postes clients simultanément. Installation et configuration des logiciels métiers, connexion aux serveurs et imprimantes réseau.</div>
-          <div class="real-skills">
-            <span class="skill-tag">Masterisation</span>
-            <span class="skill-tag">Réseau</span>
-            <span class="skill-tag">WDS</span>
-            <span class="skill-tag">Support client</span>
+          <div class="real-title">Invincible</div>
+          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/Dreguel/portfolio
           </div>
-        </div>
-
-        <!-- Placeholder PPE -->
-        <div class="real-placeholder reveal">
-          <div class="ph-icon">📄</div>
-          <strong>PPE — À venir</strong>
-          Section réservée au Projet Personnel Encadré.<br>Document à intégrer prochainement.
-        </div>
-
-        <div class="real-placeholder reveal">
-          <div class="ph-icon">📄</div>
-          <strong>AP — 05 · À venir</strong>
-          Nouvelle situation professionnelle à documenter<br>lors des prochaines périodes de stage.
-        </div>
+        </a>
 
       </div>
     </div>
