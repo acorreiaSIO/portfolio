@@ -409,10 +409,78 @@
     .stage-header { flex-direction: column; }
     .nav-tabs { display: none; }
   }
+
+/* ── PDF VIEWER MODAL ── */
+.pdf-overlay {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15,15,14,0.7);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  align-items: center; justify-content: center;
+  padding: 40px;
+}
+.pdf-overlay.open { display: flex; }
+.pdf-modal {
+  background: var(--bg3);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+  width: 100%; max-width: 960px; height: 85vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  animation: modalIn 0.3s ease;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+.pdf-modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.pdf-modal-title {
+  font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--ink);
+}
+.pdf-modal-actions { display: flex; gap: 8px; align-items: center; }
+.pdf-btn {
+  font-family: var(--sans); font-size: 12px; font-weight: 600;
+  padding: 7px 16px; border-radius: 100px; border: 1px solid var(--border);
+  background: var(--bg3); color: var(--ink); cursor: pointer;
+  transition: all 0.15s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.pdf-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.pdf-btn-close {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--bg3);
+  color: var(--ink3); cursor: pointer; font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.pdf-btn-close:hover { background: var(--red); color: #fff; border-color: var(--red); }
+.pdf-modal-body { flex: 1; overflow: hidden; }
+.pdf-modal-body iframe { width: 100%; height: 100%; border: none; }
+  
 </style>
 </head>
 <body>
-
+<!-- PDF VIEWER MODAL -->
+<div class="pdf-overlay" id="pdfOverlay" onclick="if(event.target===this)closePdf()">
+  <div class="pdf-modal">
+    <div class="pdf-modal-header">
+      <div class="pdf-modal-title" id="pdfTitle">Document</div>
+      <div class="pdf-modal-actions">
+        <a class="pdf-btn" id="pdfNewTab" href="#" target="_blank">↗ Nouvel onglet</a>
+        <button class="pdf-btn-close" onclick="closePdf()">✕</button>
+      </div>
+    </div>
+    <div class="pdf-modal-body">
+      <iframe id="pdfFrame" src=""></iframe>
+    </div>
+  </div>
+</div>
 <!-- ───────────────── NAV ───────────────── -->
 <nav>
   <div class="nav-inner">
@@ -864,55 +932,47 @@
 
       <div class="realisations-grid">
 
-        <a class="real-card reveal" href="https://github.com/acorreiaSIO/portfolio/tree/main/AP/AP3.1%20GpoPu" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
-          <div class="real-header">
-            <span class="real-num">AP — 3.1</span>
-            <span class="real-type chip chip-blue">Voir les documents ↗</span>
-          </div>
-          <div class="real-title">GpoPu</div>
-          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            github.com/acorreiaSIO/portfolio
-          </div>
-        </a>
+  <div class="real-card reveal" onclick="openPdf('AP 3.1 — GpoPu', 'pdf/AP3.1_GpoPu.pdf')" style="cursor:pointer">
+    <div class="real-header">
+      <span class="real-num">AP — 3.1</span>
+      <span class="real-type chip chip-blue">📄 Voir le PDF</span>
+    </div>
+    <div class="real-title">GpoPu</div>
+    <div class="real-context">Configuration et déploiement de stratégies de groupe (GPO) pour la gestion centralisée des postes utilisateurs.</div>
+    <div style="margin-top:auto;font-size:12px;color:var(--accent);font-weight:600">📎 Cliquez pour consulter</div>
+  </div>
 
-        <a class="real-card reveal" href="https://github.com/acorreiaSIO/portfolio/tree/main/AP/AP3.2%20Navajo" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
-          <div class="real-header">
-            <span class="real-num">AP — 3.2</span>
-            <span class="real-type chip chip-blue">Voir les documents ↗</span>
-          </div>
-          <div class="real-title">Navajo</div>
-          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            github.com/acorreiaSIO/portfolio
-          </div>
-        </a>
+  <div class="real-card reveal" onclick="openPdf('AP 3.2 — Navajo', 'pdf/AP3.2_Navajo.pdf')" style="cursor:pointer">
+    <div class="real-header">
+      <span class="real-num">AP — 3.2</span>
+      <span class="real-type chip chip-blue">📄 Voir le PDF</span>
+    </div>
+    <div class="real-title">Navajo</div>
+    <div class="real-context">Mise en place et configuration d'une infrastructure réseau sécurisée avec segmentation et gestion des accès.</div>
+    <div style="margin-top:auto;font-size:12px;color:var(--accent);font-weight:600">📎 Cliquez pour consulter</div>
+  </div>
 
-        <a class="real-card reveal" href="https://github.com/acorreiaSIO/portfolio/tree/main/AP/AP4.1%20DMZ" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
-          <div class="real-header">
-            <span class="real-num">AP — 4.1</span>
-            <span class="real-type chip chip-blue">Voir les documents ↗</span>
-          </div>
-          <div class="real-title">DMZ</div>
-          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            github.com/acorreiaSIO/portfolio
-          </div>
-        </a>
+  <div class="real-card reveal" onclick="openPdf('AP 4.1 — DMZ', 'pdf/AP4.1_DMZ.pdf')" style="cursor:pointer">
+    <div class="real-header">
+      <span class="real-num">AP — 4.1</span>
+      <span class="real-type chip chip-green">📄 Voir le PDF</span>
+    </div>
+    <div class="real-title">DMZ</div>
+    <div class="real-context">Conception et déploiement d'une zone démilitarisée (DMZ) pour protéger le réseau interne.</div>
+    <div style="margin-top:auto;font-size:12px;color:var(--accent);font-weight:600">📎 Cliquez pour consulter</div>
+  </div>
 
-        <a class="real-card reveal" href="https://github.com/acorreiaSIO/portfolio/tree/main/AP/AP4.2%20Invincible" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
-          <div class="real-header">
-            <span class="real-num">AP — 4.2</span>
-            <span class="real-type chip chip-blue">Voir les documents ↗</span>
-          </div>
-          <div class="real-title">Invincible</div>
-          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            github.com/acorreiaSIO/portfolio
-          </div>
-        </a>
+  <div class="real-card reveal" onclick="openPdf('AP 4.2 — Invincible', 'pdf/AP4.2_Invincible.pdf')" style="cursor:pointer">
+    <div class="real-header">
+      <span class="real-num">AP — 4.2</span>
+      <span class="real-type chip chip-green">📄 Voir le PDF</span>
+    </div>
+    <div class="real-title">Invincible</div>
+    <div class="real-context">Sécurisation avancée d'une infrastructure et mise en place de politiques de protection renforcées.</div>
+    <div style="margin-top:auto;font-size:12px;color:var(--accent);font-weight:600">📎 Cliquez pour consulter</div>
+  </div>
 
-      </div>
+</div>
     </div>
   </section>
 
@@ -1145,6 +1205,23 @@
 </footer>
 
 <script>
+  function openPdf(title, url) {
+  document.getElementById('pdfTitle').textContent = title;
+  document.getElementById('pdfFrame').src = url;
+  document.getElementById('pdfNewTab').href = url;
+  document.getElementById('pdfOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePdf() {
+  document.getElementById('pdfOverlay').classList.remove('open');
+  document.getElementById('pdfFrame').src = '';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePdf();
+});
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
