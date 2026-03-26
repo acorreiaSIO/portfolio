@@ -36,6 +36,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* ── LAYOUT ── */
   .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
 
   /* ── NAV ── */
@@ -272,7 +273,7 @@
   .mission-icon.hw  { background: #fff4e0; }
   .mission-icon.net { background: #e0f7f0; }
   .mission-icon.sup { background: #f0ecff; }
-
+  .mission-content {}
   .mission-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
   .mission-desc { font-size: 13px; color: var(--ink3); line-height: 1.6; }
 
@@ -284,8 +285,6 @@
     box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     display: flex; flex-direction: column; gap: 16px;
     min-height: 210px;
-    cursor: pointer;
-    text-decoration: none;
   }
   .real-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.1); border-color: var(--accent); }
   .real-header { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -306,67 +305,19 @@
     border-radius: 100px; background: var(--bg2); color: var(--ink2);
     border: 1px solid var(--border);
   }
-
-  /* ── PDF VIEWER MODAL ── */
-  .pdf-overlay {
-    display: none;
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(15,15,14,0.7);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-    align-items: center; justify-content: center;
-    padding: 40px;
+  .real-placeholder {
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 6px,
+      rgba(0,0,0,0.02) 6px, rgba(0,0,0,0.02) 7px
+    );
+    border: 2px dashed var(--border);
+    border-radius: var(--radius); padding: 32px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; min-height: 180px; text-align: center;
+    color: var(--ink3); font-size: 13px;
   }
-  .pdf-overlay.open { display: flex; }
-  .pdf-modal {
-    background: var(--bg3);
-    border-radius: var(--radius);
-    box-shadow: 0 24px 80px rgba(0,0,0,0.3);
-    width: 100%;
-    max-width: 960px;
-    height: 85vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    animation: modalIn 0.3s ease;
-  }
-  @keyframes modalIn {
-    from { opacity: 0; transform: scale(0.95) translateY(20px); }
-    to   { opacity: 1; transform: none; }
-  }
-  .pdf-modal-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
-  }
-  .pdf-modal-title {
-    font-family: var(--mono); font-size: 13px; font-weight: 700;
-    color: var(--ink);
-  }
-  .pdf-modal-actions { display: flex; gap: 8px; }
-  .pdf-btn {
-    font-family: var(--sans); font-size: 12px; font-weight: 600;
-    padding: 7px 16px; border-radius: 100px; border: 1px solid var(--border);
-    background: var(--bg3); color: var(--ink); cursor: pointer;
-    transition: all 0.15s; text-decoration: none;
-    display: inline-flex; align-items: center; gap: 6px;
-  }
-  .pdf-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .pdf-btn-close {
-    width: 32px; height: 32px; border-radius: 50%;
-    border: 1px solid var(--border); background: var(--bg3);
-    color: var(--ink3); cursor: pointer; font-size: 16px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-  }
-  .pdf-btn-close:hover { background: var(--red); color: #fff; border-color: var(--red); }
-  .pdf-modal-body {
-    flex: 1; overflow: hidden;
-  }
-  .pdf-modal-body iframe {
-    width: 100%; height: 100%; border: none;
-  }
+  .real-placeholder .ph-icon { font-size: 28px; opacity: 0.4; }
+  .real-placeholder strong { font-size: 14px; font-weight: 600; color: var(--ink2); display: block; }
 
   /* ── PAGE : COMPÉTENCES ── */
   .competences-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -423,42 +374,6 @@
     padding: 2px 8px; border-radius: 100px; letter-spacing: 0.03em;
   }
 
-  /* ── Synthèse PDF card ── */
-  .synthese-card {
-    grid-column: 1 / -1;
-    background: linear-gradient(135deg, var(--ink) 0%, #1a1a2e 100%);
-    border-radius: var(--radius);
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: var(--shadow);
-  }
-  .synthese-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,.2); }
-  .synthese-info { display: flex; flex-direction: column; gap: 8px; }
-  .synthese-label {
-    font-family: var(--mono); font-size: 11px; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
-  }
-  .synthese-title {
-    font-size: 22px; font-weight: 900; color: #fff; letter-spacing: -0.02em;
-  }
-  .synthese-desc { font-size: 14px; color: rgba(255,255,255,0.5); }
-  .synthese-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--sans); font-size: 14px; font-weight: 600;
-    padding: 14px 28px; border-radius: 100px;
-    background: var(--accent); color: #fff;
-    border: none; cursor: pointer;
-    box-shadow: 0 4px 14px rgba(26,86,240,0.4);
-    transition: transform 0.18s, box-shadow 0.18s;
-    white-space: nowrap;
-  }
-  .synthese-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,86,240,0.5); }
-
   /* ── FOOTER ── */
   footer {
     background: var(--ink); color: rgba(255,255,255,0.5);
@@ -488,14 +403,11 @@
     .hero-body { padding: 70px 20px 32px; }
     .parcours-grid, .bts-explainer, .realisations-grid, .competences-layout { grid-template-columns: 1fr; }
     .comp-table-wrap { grid-column: auto; }
-    .synthese-card { grid-column: auto; flex-direction: column; text-align: center; }
     .hero-stats { flex-direction: column; }
     .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 24px; }
     .stat:last-child { border-bottom: none; }
     .stage-header { flex-direction: column; }
     .nav-tabs { display: none; }
-    .pdf-overlay { padding: 16px; }
-    .pdf-modal { height: 90vh; }
   }
 </style>
 </head>
@@ -515,22 +427,6 @@
     <span class="nav-badge">BTS SIO · SISR</span>
   </div>
 </nav>
-
-<!-- ───────────────── PDF VIEWER MODAL ───────────────── -->
-<div class="pdf-overlay" id="pdfOverlay">
-  <div class="pdf-modal">
-    <div class="pdf-modal-header">
-      <div class="pdf-modal-title" id="pdfTitle">Document</div>
-      <div class="pdf-modal-actions">
-        <a class="pdf-btn" id="pdfNewTab" href="#" target="_blank" rel="noopener">↗ Ouvrir dans un nouvel onglet</a>
-        <button class="pdf-btn-close" onclick="closePdf()" title="Fermer">✕</button>
-      </div>
-    </div>
-    <div class="pdf-modal-body">
-      <iframe id="pdfFrame" src=""></iframe>
-    </div>
-  </div>
-</div>
 
 <!-- ───────────────── ACCUEIL ───────────────── -->
 <div id="page-accueil" class="page active">
@@ -563,7 +459,7 @@
       <div class="stat-label">En entreprise</div>
     </div>
     <div class="stat">
-      <div class="stat-val">7</div>
+      <div class="stat-val">8</div>
       <div class="stat-label">Stages réalisés</div>
     </div>
     <div class="stat">
@@ -644,7 +540,6 @@
 </div>
 
 <!-- ───────────────── STAGES ───────────────── -->
-<!-- ORDRE : du plus ANCIEN au plus RÉCENT -->
 <div id="page-stages" class="page">
 <div style="padding-top:60px; background: var(--bg)">
 
@@ -653,86 +548,13 @@
       <div class="section-header">
         <div class="section-num">02 — Expériences</div>
         <h2 class="section-title">Mes stages<br>en entreprise</h2>
-        <p class="section-sub">7 expériences dans des contextes variés (ESN, service informatique interne, commerce) pour un total de <strong>36 semaines</strong> en situation professionnelle réelle.</p>
+        <p class="section-sub">5 expériences dans des contextes variés (ESN, service informatique interne, commerce) pour un total de <strong>36 semaines</strong> en situation professionnelle réelle.</p>
       </div>
 
       <div class="stages-timeline">
 
-        <!-- 1 — GITEM — Janvier 2022 -->
-        <div class="stage-entry reveal">
-          <div class="stage-marker">G</div>
-          <div class="stage-card">
-            <div class="stage-header">
-              <div>
-                <div class="stage-company">GITEM</div>
-                <div class="stage-meta">
-                  <span class="chip chip-blue">Cavignac (33)</span>
-                  <span class="chip chip-gray">Commerce / Réparation</span>
-                </div>
-              </div>
-              <div class="stage-duration">3 semaines<span>Janvier 2022</span></div>
-            </div>
-            <div class="stage-missions">
-              <div class="mission">
-                <div class="mission-icon hw">🔩</div>
-                <div class="mission-content">
-                  <div class="mission-title">Diagnostic & Remplacement de Composants</div>
-                  <div class="mission-desc">Diagnostic matériel approfondi et remplacement de composants défaillants : barrettes RAM, dalles écran LCD/IPS, batteries (laptops et tablettes).</div>
-                </div>
-              </div>
-              <div class="mission">
-                <div class="mission-icon sys">🐧</div>
-                <div class="mission-content">
-                  <div class="mission-title">Réinstallation OS — Windows & Linux</div>
-                  <div class="mission-desc">Réinstallation complète de systèmes d'exploitation Windows et Linux (Ubuntu, Debian) sur différents profils matériels, avec partitionnement et configuration initiale.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2 — PC CENTER 33 — Juin 2022 -->
-        <div class="stage-entry reveal">
-          <div class="stage-marker">C</div>
-          <div class="stage-card">
-            <div class="stage-header">
-              <div>
-                <div class="stage-company">PC Center 33</div>
-                <div class="stage-meta">
-                  <span class="chip chip-blue">Cenon (33)</span>
-                  <span class="chip chip-gray">Commerce informatique</span>
-                </div>
-              </div>
-              <div class="stage-duration">4 semaines<span>Juin 2022</span></div>
-            </div>
-            <div class="stage-missions">
-              <div class="mission">
-                <div class="mission-icon sec">🛡</div>
-                <div class="mission-content">
-                  <div class="mission-title">Sécurité — Dépannage Malwares & Sauvegardes</div>
-                  <div class="mission-desc">Élimination de malwares et virus sur postes clients (outils spécialisés, réinstallation ciblée). Mise en place de solutions de sauvegarde des données pour prévenir les pertes.</div>
-                </div>
-              </div>
-              <div class="mission">
-                <div class="mission-icon sys">🪟</div>
-                <div class="mission-content">
-                  <div class="mission-title">Installation & Configuration OS</div>
-                  <div class="mission-desc">Installation et configuration de Windows (7/10/11) et macOS sur postes clients particuliers et professionnels. Paramétrage post-installation, drivers, mises à jour.</div>
-                </div>
-              </div>
-              <div class="mission">
-                <div class="mission-icon hw">🖥</div>
-                <div class="mission-content">
-                  <div class="mission-title">Maintenance Hardware</div>
-                  <div class="mission-desc">Maintenance préventive (nettoyage interne, vérification thermique) et curative (remplacement de composants défectueux : RAM, disques, cartes graphiques, alimentations).</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3 — EOVEST 1/3 — 2023 (4 sem) -->
-        <div class="stage-entry reveal">
+        <!-- EOVEST 1 -->
+        <div class="stage-entry reveal" style="animation-delay:0s">
           <div class="stage-marker">E</div>
           <div class="stage-card">
             <div class="stage-header">
@@ -765,41 +587,8 @@
           </div>
         </div>
 
-        <!-- 4 — PICHET — Mai 2023 -->
-        <div class="stage-entry reveal">
-          <div class="stage-marker">P</div>
-          <div class="stage-card">
-            <div class="stage-header">
-              <div>
-                <div class="stage-company">Pichet</div>
-                <div class="stage-meta">
-                  <span class="chip chip-blue">Pessac (33)</span>
-                  <span class="chip chip-gray">Promoteur immobilier</span>
-                </div>
-              </div>
-              <div class="stage-duration">4 semaines<span>Mai 2023</span></div>
-            </div>
-            <div class="stage-missions">
-              <div class="mission">
-                <div class="mission-icon net">📋</div>
-                <div class="mission-content">
-                  <div class="mission-title">Logistique IT — Gestion des Stocks Réseau</div>
-                  <div class="mission-desc">Pilotage de l'inventaire du matériel réseau (switches, câbles, modules) afin d'anticiper les ruptures de stock et garantir la continuité des interventions techniques.</div>
-                </div>
-              </div>
-              <div class="mission">
-                <div class="mission-icon hw">🔧</div>
-                <div class="mission-content">
-                  <div class="mission-title">Maintenance des Postes de Travail</div>
-                  <div class="mission-desc">Prise en charge des incidents matériels sur postes utilisateurs, diagnostic, intervention et rétablissement du service dans les délais définis.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5 — EOVEST 2/3 — 2024 (4 sem) -->
-        <div class="stage-entry reveal">
+        <!-- EOVEST 2 -->
+        <div class="stage-entry reveal" style="animation-delay:0.05s">
           <div class="stage-marker">E</div>
           <div class="stage-card">
             <div class="stage-header">
@@ -832,8 +621,42 @@
           </div>
         </div>
 
-        <!-- 6 — SPOC-IT — Juin 2025 (5 sem) -->
-        <div class="stage-entry reveal">
+        <!-- EOVEST 3 -->
+        <div class="stage-entry reveal" style="animation-delay:0.1s">
+          <div class="stage-marker">E</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div>
+                <div class="stage-company">Eovest</div>
+                <div class="stage-meta">
+                  <span class="chip chip-blue">Mérignac (33)</span>
+                  <span class="chip chip-green">Service IT interne</span>
+                  <span class="chip chip-gray">Stage 3/3</span>
+                </div>
+              </div>
+              <div class="stage-duration">4 semaines<span>2026</span></div>
+            </div>
+            <div class="stage-missions">
+              <div class="mission">
+                <div class="mission-icon sys">⚙</div>
+                <div class="mission-content">
+                  <div class="mission-title">Administration Système — Active Directory</div>
+                  <div class="mission-desc">Gestion des droits d'accès et des comptes utilisateurs via Active Directory. Configuration des GPO et des environnements de travail.</div>
+                </div>
+              </div>
+              <div class="mission">
+                <div class="mission-icon sup">🛠</div>
+                <div class="mission-content">
+                  <div class="mission-title">Support & Maintenance</div>
+                  <div class="mission-desc">Assistance technique auprès des utilisateurs internes. Diagnostic et réparation physique d'équipements défectueux.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPOC-IT -->
+        <div class="stage-entry reveal" style="animation-delay:0.1s">
           <div class="stage-marker">S</div>
           <div class="stage-card">
             <div class="stage-header">
@@ -872,42 +695,106 @@
           </div>
         </div>
 
-        <!-- 7 — EOVEST 3/3 — 2026 (8 sem) ★ -->
-        <div class="stage-entry reveal">
-          <div class="stage-marker" style="border-color:var(--accent);background:var(--accent2)">E</div>
-          <div class="stage-card" style="border-color:var(--accent);border-width:2px">
+        <!-- PICHET -->
+        <div class="stage-entry reveal" style="animation-delay:0.2s">
+          <div class="stage-marker">P</div>
+          <div class="stage-card">
             <div class="stage-header">
               <div>
-                <div class="stage-company">Eovest <span style="font-size:12px;color:var(--accent);font-weight:700;margin-left:8px">★ Stage principal</span></div>
+                <div class="stage-company">Pichet</div>
                 <div class="stage-meta">
-                  <span class="chip chip-blue">Mérignac (33)</span>
-                  <span class="chip chip-green">Service IT interne</span>
-                  <span class="chip chip-gray">Stage 3/3</span>
-                  <span class="chip chip-red">8 semaines</span>
+                  <span class="chip chip-blue">Pessac (33)</span>
+                  <span class="chip chip-gray">Promoteur immobilier</span>
                 </div>
               </div>
-              <div class="stage-duration">8 semaines<span>2026</span></div>
+              <div class="stage-duration">4 semaines<span>Mai 2023</span></div>
             </div>
             <div class="stage-missions">
               <div class="mission">
-                <div class="mission-icon sys">⚙</div>
+                <div class="mission-icon net">📋</div>
                 <div class="mission-content">
-                  <div class="mission-title">Administration Système — Active Directory</div>
-                  <div class="mission-desc">Gestion des droits d'accès et des comptes utilisateurs via Active Directory. Configuration des GPO et des environnements de travail.</div>
+                  <div class="mission-title">Logistique IT — Gestion des Stocks Réseau</div>
+                  <div class="mission-desc">Pilotage de l'inventaire du matériel réseau (switches, câbles, modules) afin d'anticiper les ruptures de stock et garantir la continuité des interventions techniques.</div>
                 </div>
               </div>
               <div class="mission">
-                <div class="mission-icon sup">🛠</div>
+                <div class="mission-icon hw">🔧</div>
                 <div class="mission-content">
-                  <div class="mission-title">Support & Maintenance</div>
-                  <div class="mission-desc">Assistance technique auprès des utilisateurs internes. Diagnostic et réparation physique d'équipements défectueux.</div>
+                  <div class="mission-title">Maintenance des Postes de Travail</div>
+                  <div class="mission-desc">Prise en charge des incidents matériels sur postes utilisateurs, diagnostic, intervention et rétablissement du service dans les délais définis.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PC CENTER 33 -->
+        <div class="stage-entry reveal" style="animation-delay:0.3s">
+          <div class="stage-marker">C</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div>
+                <div class="stage-company">PC Center 33</div>
+                <div class="stage-meta">
+                  <span class="chip chip-blue">Cenon (33)</span>
+                  <span class="chip chip-gray">Commerce informatique</span>
+                </div>
+              </div>
+              <div class="stage-duration">4 semaines<span>Juin 2022</span></div>
+            </div>
+            <div class="stage-missions">
+              <div class="mission">
+                <div class="mission-icon sec">🛡</div>
+                <div class="mission-content">
+                  <div class="mission-title">Sécurité — Dépannage Malwares & Sauvegardes</div>
+                  <div class="mission-desc">Élimination de malwares et virus sur postes clients (outils spécialisés, réinstallation ciblée). Mise en place de solutions de sauvegarde des données pour prévenir les pertes.</div>
                 </div>
               </div>
               <div class="mission">
-                <div class="mission-icon net">📦</div>
+                <div class="mission-icon sys">🪟</div>
                 <div class="mission-content">
-                  <div class="mission-title">Gestion de Parc Informatique</div>
-                  <div class="mission-desc">Gestion avancée du parc : inventaire, suivi CMDB, préparation et déploiement des postes, gestion du cycle de vie du matériel.</div>
+                  <div class="mission-title">Installation & Configuration OS</div>
+                  <div class="mission-desc">Installation et configuration de Windows (7/10/11) et macOS sur postes clients particuliers et professionnels. Paramétrage post-installation, drivers, mises à jour.</div>
+                </div>
+              </div>
+              <div class="mission">
+                <div class="mission-icon hw">🖥</div>
+                <div class="mission-content">
+                  <div class="mission-title">Maintenance Hardware</div>
+                  <div class="mission-desc">Maintenance préventive (nettoyage interne, vérification thermique) et curative (remplacement de composants défectueux : RAM, disques, cartes graphiques, alimentations).</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GITEM -->
+        <div class="stage-entry reveal" style="animation-delay:0.4s">
+          <div class="stage-marker">G</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <div>
+                <div class="stage-company">GITEM</div>
+                <div class="stage-meta">
+                  <span class="chip chip-blue">Cavignac (33)</span>
+                  <span class="chip chip-gray">Commerce / Réparation</span>
+                </div>
+              </div>
+              <div class="stage-duration">3 semaines<span>Janvier 2022</span></div>
+            </div>
+            <div class="stage-missions">
+              <div class="mission">
+                <div class="mission-icon hw">🔩</div>
+                <div class="mission-content">
+                  <div class="mission-title">Diagnostic & Remplacement de Composants</div>
+                  <div class="mission-desc">Diagnostic matériel approfondi et remplacement de composants défaillants : barrettes RAM, dalles écran LCD/IPS, batteries (laptops et tablettes).</div>
+                </div>
+              </div>
+              <div class="mission">
+                <div class="mission-icon sys">🐧</div>
+                <div class="mission-content">
+                  <div class="mission-title">Réinstallation OS — Windows & Linux</div>
+                  <div class="mission-desc">Réinstallation complète de systèmes d'exploitation Windows et Linux (Ubuntu, Debian) sur différents profils matériels, avec partitionnement et configuration initiale.</div>
                 </div>
               </div>
             </div>
@@ -930,64 +817,355 @@
       <div class="section-header">
         <div class="section-num">03 — Réalisations</div>
         <h2 class="section-title">Activités<br>Professionnelles</h2>
-        <p class="section-sub">Situations professionnelles réalisées en stage. Cliquez sur une AP pour consulter le document PDF associé directement dans le navigateur.</p>
+        <p class="section-sub">Situations professionnelles réalisées en stage. Cliquez sur une AP pour accéder aux documents associés.</p>
       </div>
 
       <div class="realisations-grid">
 
-        <!-- AP 3.1 -->
-        <div class="real-card reveal" onclick="openPdf('AP 3.1 — GpoPu', 'pdf/AP3.1_GpoPu.pdf')">
+        <a class="real-card reveal" href="https://github.com/acorreiaSIO/portfolio/tree/main/AP/AP3.1%20GpoPu" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
           <div class="real-header">
             <span class="real-num">AP — 3.1</span>
-            <span class="real-type chip chip-blue">📄 Voir le PDF</span>
+            <span class="real-type chip chip-blue">Voir les documents ↗</span>
           </div>
           <div class="real-title">GpoPu</div>
-          <div class="real-context">Configuration et déploiement de stratégies de groupe (GPO) pour la gestion centralisée des postes utilisateurs dans un environnement Active Directory.</div>
-          <div class="real-skills">
-            <span class="skill-tag">Active Directory</span>
-            <span class="skill-tag">GPO</span>
-            <span class="skill-tag">Windows Server</span>
+          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/acorreiaSIO/portfolio
           </div>
-          <div style="margin-top:auto;padding-top:12px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--accent);font-weight:600">
-            📎 Cliquez pour ouvrir le document
-          </div>
-        </div>
+        </a>
 
-        <!-- AP 3.2 -->
-        <div class="real-card reveal" onclick="openPdf('AP 3.2 — Navajo', 'pdf/AP3.2_Navajo.pdf')">
+        <a class="real-card reveal" href="https://github.com/acorreiaSIO/portfolio/tree/main/AP/AP3.2%20Navajo" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
           <div class="real-header">
             <span class="real-num">AP — 3.2</span>
-            <span class="real-type chip chip-blue">📄 Voir le PDF</span>
+            <span class="real-type chip chip-blue">Voir les documents ↗</span>
           </div>
           <div class="real-title">Navajo</div>
-          <div class="real-context">Mise en place et configuration d'une infrastructure réseau sécurisée avec segmentation et gestion des accès.</div>
-          <div class="real-skills">
-            <span class="skill-tag">Réseau</span>
-            <span class="skill-tag">Sécurité</span>
-            <span class="skill-tag">Infrastructure</span>
+          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/acorreiaSIO/portfolio
           </div>
-          <div style="margin-top:auto;padding-top:12px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--accent);font-weight:600">
-            📎 Cliquez pour ouvrir le document
-          </div>
-        </div>
+        </a>
 
-        <!-- AP 4.1 -->
-        <div class="real-card reveal" onclick="openPdf('AP 4.1 — DMZ', 'pdf/AP4.1_DMZ.pdf')">
+        <a class="real-card reveal" href="https://github.com/acorreiaSIO/portfolio/tree/main/AP/AP4.1%20DMZ" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
           <div class="real-header">
             <span class="real-num">AP — 4.1</span>
-            <span class="real-type chip chip-green">📄 Voir le PDF</span>
+            <span class="real-type chip chip-blue">Voir les documents ↗</span>
           </div>
           <div class="real-title">DMZ</div>
-          <div class="real-context">Conception et déploiement d'une zone démilitarisée (DMZ) pour isoler les services exposés et protéger le réseau interne de l'entreprise.</div>
-          <div class="real-skills">
-            <span class="skill-tag">Firewall</span>
-            <span class="skill-tag">DMZ</span>
-            <span class="skill-tag">Sécurité réseau</span>
+          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/acorreiaSIO/portfolio
           </div>
-          <div style="margin-top:auto;padding-top:12px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--accent);font-weight:600">
-            📎 Cliquez pour ouvrir le document
+        </a>
+
+        <a class="real-card reveal" href="https://github.com/acorreiaSIO/portfolio/tree/main/AP/AP4.2%20Invincible" target="_blank" rel="noopener" style="text-decoration:none;cursor:pointer">
+          <div class="real-header">
+            <span class="real-num">AP — 4.2</span>
+            <span class="real-type chip chip-blue">Voir les documents ↗</span>
+          </div>
+          <div class="real-title">Invincible</div>
+          <div class="real-context" style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/acorreiaSIO/portfolio
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ───────────────── COMPÉTENCES ───────────────── -->
+<div id="page-competences" class="page">
+<div style="padding-top:60px">
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-num">04 — Compétences</div>
+        <h2 class="section-title">Tableau de synthèse<br>des compétences</h2>
+        <p class="section-sub">Compétences techniques acquises et consolidées au fil des stages et de la formation BTS SIO option SISR.</p>
+      </div>
+
+      <div class="competences-layout">
+
+        <!-- Support -->
+        <div class="comp-group reveal">
+          <div class="comp-group-header">
+            <div class="comp-group-icon" style="background:#f0ecff">🛠</div>
+            <div class="comp-group-title">Support & Maintenance</div>
+          </div>
+          <div class="comp-rows">
+            <div class="comp-row">
+              <div class="comp-name">Support N1 utilisateurs</div>
+              <div class="comp-bar-wrap"><div class="comp-bar" data-w="90"></div></div>
+              <div class="comp-level">90%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Maintenance hardware</div>
+              <div class="comp-bar-wrap"><div class="comp-bar" data-w="85"></div></div>
+              <div class="comp-level">85%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Diagnostic incidents</div>
+              <div class="comp-bar-wrap"><div class="comp-bar" data-w="80"></div></div>
+              <div class="comp-level">80%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Remplacement composants</div>
+              <div class="comp-bar-wrap"><div class="comp-bar" data-w="82"></div></div>
+              <div class="comp-level">82%</div>
+            </div>
           </div>
         </div>
 
-        <!-- AP 4.2 -->
-        <div class="real-card reveal" onclick="openPdf('AP 4.2 — Invincible', 'pdf/AP4.2_Inv
+        <!-- Administration -->
+        <div class="comp-group reveal">
+          <div class="comp-group-header">
+            <div class="comp-group-icon" style="background:var(--accent2)">⚙</div>
+            <div class="comp-group-title">Administration Système</div>
+          </div>
+          <div class="comp-rows">
+            <div class="comp-row">
+              <div class="comp-name">Active Directory</div>
+              <div class="comp-bar-wrap"><div class="comp-bar" data-w="78"></div></div>
+              <div class="comp-level">78%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Windows Server</div>
+              <div class="comp-bar-wrap"><div class="comp-bar" data-w="72"></div></div>
+              <div class="comp-level">72%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Linux (Ubuntu/Debian)</div>
+              <div class="comp-bar-wrap"><div class="comp-bar" data-w="65"></div></div>
+              <div class="comp-level">65%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Masterisation/Déploiement</div>
+              <div class="comp-bar-wrap"><div class="comp-bar" data-w="75"></div></div>
+              <div class="comp-level">75%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Réseau -->
+        <div class="comp-group reveal">
+          <div class="comp-group-header">
+            <div class="comp-group-icon" style="background:#e0f7f0">🔌</div>
+            <div class="comp-group-title">Réseaux & Infrastructure</div>
+          </div>
+          <div class="comp-rows">
+            <div class="comp-row">
+              <div class="comp-name">Diagnostic réseau</div>
+              <div class="comp-bar-wrap"><div class="comp-bar green" data-w="70"></div></div>
+              <div class="comp-level">70%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Gestion de parc (GLPI)</div>
+              <div class="comp-bar-wrap"><div class="comp-bar green" data-w="80"></div></div>
+              <div class="comp-level">80%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Configuration postes réseau</div>
+              <div class="comp-bar-wrap"><div class="comp-bar green" data-w="75"></div></div>
+              <div class="comp-level">75%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">TCP/IP, DNS, DHCP</div>
+              <div class="comp-bar-wrap"><div class="comp-bar green" data-w="68"></div></div>
+              <div class="comp-level">68%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sécurité -->
+        <div class="comp-group reveal">
+          <div class="comp-group-header">
+            <div class="comp-group-icon" style="background:#fde8e5">🛡</div>
+            <div class="comp-group-title">Sécurité</div>
+          </div>
+          <div class="comp-rows">
+            <div class="comp-row">
+              <div class="comp-name">Suppression malwares</div>
+              <div class="comp-bar-wrap"><div class="comp-bar red" data-w="80"></div></div>
+              <div class="comp-level">80%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Gestion des droits AD</div>
+              <div class="comp-bar-wrap"><div class="comp-bar red" data-w="75"></div></div>
+              <div class="comp-level">75%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Sauvegarde des données</div>
+              <div class="comp-bar-wrap"><div class="comp-bar red" data-w="72"></div></div>
+              <div class="comp-level">72%</div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-name">Bonnes pratiques RGPD</div>
+              <div class="comp-bar-wrap"><div class="comp-bar red" data-w="60"></div></div>
+              <div class="comp-level">60%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau de synthèse complet -->
+        <div class="comp-table-wrap reveal">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Compétence</th>
+                <th>Domaine</th>
+                <th>Contexte d'acquisition</th>
+                <th>Niveau</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Active Directory — Gestion utilisateurs & GPO</td>
+                <td>Administration</td>
+                <td>Eovest (20 sem.)</td>
+                <td><span class="badge chip-blue">Opérationnel</span></td>
+              </tr>
+              <tr>
+                <td>Masterisation et déploiement de postes</td>
+                <td>Déploiement</td>
+                <td>Spoc-it, Eovest</td>
+                <td><span class="badge chip-blue">Opérationnel</span></td>
+              </tr>
+              <tr>
+                <td>Gestion de parc (inventaire, suivi CMDB)</td>
+                <td>Gestion parc</td>
+                <td>Eovest, Spoc-it, Pichet</td>
+                <td><span class="badge chip-green">Avancé</span></td>
+              </tr>
+              <tr>
+                <td>Support utilisateurs Niveau 1</td>
+                <td>Support</td>
+                <td>Eovest, Spoc-it</td>
+                <td><span class="badge chip-green">Avancé</span></td>
+              </tr>
+              <tr>
+                <td>Maintenance hardware (composants)</td>
+                <td>Maintenance</td>
+                <td>PC Center 33, GITEM</td>
+                <td><span class="badge chip-green">Avancé</span></td>
+              </tr>
+              <tr>
+                <td>Installation Windows / macOS / Linux</td>
+                <td>Systèmes</td>
+                <td>PC Center 33, GITEM</td>
+                <td><span class="badge chip-green">Avancé</span></td>
+              </tr>
+              <tr>
+                <td>Suppression malwares & sécurisation</td>
+                <td>Sécurité</td>
+                <td>PC Center 33</td>
+                <td><span class="badge chip-blue">Opérationnel</span></td>
+              </tr>
+              <tr>
+                <td>Sauvegarde et restauration de données</td>
+                <td>Sécurité</td>
+                <td>PC Center 33</td>
+                <td><span class="badge chip-blue">Opérationnel</span></td>
+              </tr>
+              <tr>
+                <td>Diagnostic et résolution réseau</td>
+                <td>Réseaux</td>
+                <td>Spoc-it, Pichet</td>
+                <td><span class="badge chip-gray">En progression</span></td>
+              </tr>
+              <tr>
+                <td>Rédaction de documentation technique</td>
+                <td>Transversal</td>
+                <td>BTS SIO — cours & stages</td>
+                <td><span class="badge chip-blue">Opérationnel</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ───────────────── FOOTER ───────────────── -->
+<footer>
+  <div>
+    <strong>André Amorim Correia</strong> — Portfolio BTS SIO SISR
+  </div>
+  <div class="footer-mono">Lycée Gustave Eiffel · Bordeaux · 2024–2025</div>
+</footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(t => {
+      if (t.textContent.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+          .includes(id.replace('accueil','accueil').replace('presentation','presentation')
+          .replace('stages','stages').replace('realisations','realisations')
+          .replace('competences','competences'))) {
+        t.classList.add('active');
+      }
+    });
+    window.scrollTo(0, 0);
+    setTimeout(initPage, 50);
+  }
+
+  function initPage() {
+    const reveals = document.querySelectorAll('.page.active .reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    reveals.forEach(r => {
+      r.classList.remove('visible');
+      observer.observe(r);
+    });
+
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.comp-bar').forEach(bar => {
+            const w = bar.getAttribute('data-w');
+            setTimeout(() => { bar.style.width = w + '%'; }, 200);
+          });
+          barObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.page.active .comp-group').forEach(g => barObserver.observe(g));
+  }
+
+  document.querySelectorAll('.nav-tab').forEach((tab, i) => {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      const pages = ['accueil','presentation','stages','realisations','competences'];
+      showPage(pages[i]);
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      if (this.getAttribute('onclick')) return;
+      e.preventDefault();
+    });
+  });
+
+  setTimeout(initPage, 100);
+</script>
+</body>
+</html>
