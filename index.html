@@ -170,6 +170,11 @@
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .parcours-card:hover { transform: translateY(-2px); box-shadow: 0 4px 24px rgba(0,0,0,.1); }
+  .cv-section { margin-bottom: 48px; }
+  .cv-frame-wrap { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); background: var(--bg2); }
+  .cv-frame { width: 100%; height: 700px; border: none; display: block; }
+  .cv-open-btn { position: absolute; top: 12px; right: 12px; background: var(--ink); color: #fff; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 100px; text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+  .cv-open-btn:hover { opacity: 1; }
   .card-icon {
     width: 42px; height: 42px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
@@ -537,6 +542,14 @@
         <div class="section-num">01 — Présentation</div>
         <h2 class="section-title">Mon parcours<br>scolaire & professionnel</h2>
         <p class="section-sub">De la découverte des systèmes numériques jusqu'à la spécialisation en infrastructure réseaux, mon cursus est axé sur la technique terrain.</p>
+      </div>
+
+      <!-- CV -->
+      <div class="cv-section reveal">
+        <div class="cv-frame-wrap">
+          <iframe src="https://drive.google.com/file/d/1R_N74-2MymQe0_QC8JSa7hljKy1jmaTj/preview" class="cv-frame" allowfullscreen></iframe>
+          <a href="https://drive.google.com/file/d/1R_N74-2MymQe0_QC8JSa7hljKy1jmaTj/view" target="_blank" class="cv-open-btn">Ouvrir en plein écran ↗</a>
+        </div>
       </div>
 
       <div class="parcours-grid reveal">
@@ -919,14 +932,7 @@
         .ap-num-label { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); }
         .ap-name { font-size: 18px; font-weight: 700; color: var(--ink); }
         .ap-docs { padding: 16px 28px; display: flex; flex-direction: column; gap: 8px; }
-        .ap-doc-link {
-          display: flex; align-items: center; gap: 12px;
-          padding: 12px 16px; border-radius: 8px;
-          background: var(--bg); border: 1px solid var(--border2);
-          text-decoration: none; color: var(--ink2);
-          font-size: 14px; font-weight: 500;
-          transition: background 0.15s, border-color 0.15s, color 0.15s;
-        }
+        .ap-doc-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border2); text-decoration: none; color: var(--ink2); font-size: 14px; font-weight: 500; transition: background 0.15s, border-color 0.15s, color 0.15s; }
         .ap-doc-link:hover { background: var(--accent2); border-color: rgba(26,86,240,0.2); color: var(--accent); }
         .ap-doc-link:hover .ap-arrow { color: var(--accent); }
         .ap-arrow { font-size: 12px; color: var(--ink3); margin-left: auto; flex-shrink: 0; }
@@ -936,107 +942,51 @@
 
       <!-- AP 3.1 GpoPu -->
       <div class="ap-block reveal">
-        <div class="ap-block-header">
-          <span class="ap-num-label">AP 3.1</span>
-          <span class="ap-name">GpoPu</span>
-        </div>
+        <div class="ap-block-header"><span class="ap-num-label">AP 3.1</span><span class="ap-name">GpoPu</span></div>
         <div class="ap-docs">
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.1%20GpoPu/AMORIM-CORREIA-Andr%C3%A9-journal-de-bord.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>AMORIM-CORREIA-André-journal-de-bord.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.1%20GpoPu/Fiche%20R%C3%A9alisation%20Professionnelle%20%E2%80%93%20AMORIM%20CORREIA%20Andr%C3%A9.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Fiche Réalisation Professionnelle – AMORIM CORREIA André.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.1%20GpoPu/Installation-et-configuration-service-DHCP.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Installation-et-configuration-service-DHCP.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.1%20GpoPu/Installation-et-configuration-service-DNS-primaire.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Installation-et-configuration-service-DNS-primaire.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.1%20GpoPu/Installation-et-configuration-service-DNS-secondaire.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Installation-et-configuration-service-DNS-secondaire.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.1%20GpoPu/Sch%C3%A9mas%20r%C3%A9seau%20L%20%2B%20P.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Schémas réseau L + P.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.1%20GpoPu/Table%20de%20routage%20EQ3.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Table de routage EQ3.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.1%20GpoPu/Table%20des%20Syst%C3%A8mes.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Table des Systèmes.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.1%20GpoPu/ap3.1%20GPoPu%20CdC%202025.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>ap3.1 GPoPu CdC 2025.pdf</span><span class="ap-arrow">↗</span>
-          </a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1AzFLIx6aHxT9RHsMH8blWPKgIXM2gO63/view" target="_blank"><span>📄</span><span>AMORIM-CORREIA-André-journal-de-bord.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1rqylCL8anHEdlGcehWDKvsggPN4uOOWv/view" target="_blank"><span>📄</span><span>ap3.1 GPoPu CdC 2025.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1tVv0ABidpHuHHaUw3xm_59svIemX1lOw/view" target="_blank"><span>📄</span><span>Fiche Réalisation Professionnelle – AMORIM CORREIA André.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1EXJrOvBhgxHiEgrhIDnlY1X-J-a3ol3G/view" target="_blank"><span>📄</span><span>Installation-et-configuration-service-DHCP.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1ixq6sy9o11d7jAmrp1ZOQHerX9Ma1kJ_/view" target="_blank"><span>📄</span><span>Installation-et-configuration-service-DNS-primaire.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1SHEngRmNVRUoEnnjQYhVTAN2gEUo5ehM/view" target="_blank"><span>📄</span><span>Installation-et-configuration-service-DNS-secondaire.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1QGLGu6Swo2mQb-Sb305qQ-CrL-7KuabH/view" target="_blank"><span>📄</span><span>Schémas réseau L + P.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1ofpWe0qum_uU-pI9_6UoKzPoZTgkvMMB/view" target="_blank"><span>📄</span><span>Table de routage EQ3.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/16CBGLLdGcK7iAudMVSaIcbDraFd4Z7xi/view" target="_blank"><span>📄</span><span>Table des Systèmes.pdf</span><span class="ap-arrow">↗</span></a>
         </div>
       </div>
 
       <!-- AP 3.2 Navajo -->
       <div class="ap-block reveal">
-        <div class="ap-block-header">
-          <span class="ap-num-label">AP 3.2</span>
-          <span class="ap-name">Navajo</span>
-        </div>
+        <div class="ap-block-header"><span class="ap-num-label">AP 3.2</span><span class="ap-name">Navajo</span></div>
         <div class="ap-docs">
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.2%20Navajo/AMORIM-CORREIA-Andr%C3%A9-journal-de-bord.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>AMORIM-CORREIA-André-journal-de-bord.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.2%20Navajo/AMORIM-CORREIA-DHCP.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>AMORIM-CORREIA-DHCP.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.2%20Navajo/AMORIM-CORREIA-DNS.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>AMORIM-CORREIA-DNS.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.2%20Navajo/Fiche%20R%C3%A9alisation%20Professionnelle%20%E2%80%93%20AMORIM%20CORREIA%20Andr%C3%A9.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Fiche Réalisation Professionnelle – AMORIM CORREIA André.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.2%20Navajo/ap3.1%20Navajo%202025%20CDC%20v1.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>ap3.1 Navajo 2025 CDC v1.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP3.2%20Navajo/srl.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>srl.pdf</span><span class="ap-arrow">↗</span>
-          </a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1kjD1_CVrzukUhhzThN2cpwY9RDK-7Pk4/view" target="_blank"><span>📄</span><span>AMORIM-CORREIA-André-journal-de-bord.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1mLPZCK67YXjNNFm6DfXwS0NAWH35hgOj/view" target="_blank"><span>📄</span><span>AMORIM-CORREIA-DHCP.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1MkFfTw-6ZYcGYKPwO67ss7D3JMhx5bNM/view" target="_blank"><span>📄</span><span>AMORIM-CORREIA-DNS.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1rn1kRttc30aA00eKNVyN4CjL-6f_Uknd/view" target="_blank"><span>📄</span><span>ap3.1 Navajo 2025 CDC v1.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1hTdDk7Eq2W6w0ZcqgKGOUxJznXM4RYmD/view" target="_blank"><span>📄</span><span>Fiche Réalisation Professionnelle – AMORIM CORREIA André.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1tWaN9fOaOZIMaKJFOXK7bFU-F9rNdu8p/view" target="_blank"><span>📄</span><span>srl.pdf</span><span class="ap-arrow">↗</span></a>
         </div>
       </div>
 
       <!-- AP 4.1 DMZ -->
       <div class="ap-block reveal">
-        <div class="ap-block-header">
-          <span class="ap-num-label">AP 4.1</span>
-          <span class="ap-name">DMZ</span>
-        </div>
+        <div class="ap-block-header"><span class="ap-num-label">AP 4.1</span><span class="ap-name">DMZ</span></div>
         <div class="ap-docs">
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP4.1%20DMZ/Documentation_technique_fgtw.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Documentation_technique_fgtw.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP4.1%20DMZ/Fiche%20RP%20AMORIM%20CORREIA%20Andre.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Fiche RP AMORIM CORREIA Andre.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP4.1%20DMZ/Journal_de_bord_AMORIM_CORREIA_Andr%C3%A9.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Journal_de_bord_AMORIM_CORREIA_André.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP4.1%20DMZ/PDF%20-%20Sch%C3%A9mas%20r%C3%A9seaux.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>PDF - Schémas réseaux.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP4.1%20DMZ/Table%20de%20routage%20-%20CORREIA.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>Table de routage - CORREIA.pdf</span><span class="ap-arrow">↗</span>
-          </a>
-          <a class="ap-doc-link" href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/acorreiaSIO/portfolio/main/AP/AP4.1%20DMZ/ap4.1%20DMZ%202025%20CDC%20v3.pdf" target="_blank" rel="noopener">
-            <span>📄</span><span>ap4.1 DMZ 2025 CDC v3.pdf</span><span class="ap-arrow">↗</span>
-          </a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1qj1DrZHzJEqt4Yg_btPPdKduwl2JvDjo/view" target="_blank"><span>📄</span><span>ap4.1 DMZ 2025 CDC v3.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1bC4s3kpn1ySMdTAeIT41WxXXa-V5GMcS/view" target="_blank"><span>📄</span><span>Captures d'écran Trello.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/17MxNLw2sXVW9Cv0NgHMi-G6OXlonOsKk/view" target="_blank"><span>📄</span><span>Documentation_technique_fgtw.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1y9XFtyiiGbCsLsLn4L-rxJAd3n8B8dKP/view" target="_blank"><span>📄</span><span>Fiche RP AMORIM CORREIA Andre.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1m8gctoG7MeRaHoyA3axNpteKv3JydZzn/view" target="_blank"><span>📄</span><span>Journal_de_bord_AMORIM_CORREIA_André.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/1qsPkf0XCK_FFjvHbfICY-cMbuSQBVoJu/view" target="_blank"><span>📄</span><span>PDF - Schémas réseaux.pdf</span><span class="ap-arrow">↗</span></a>
+          <a class="ap-doc-link" href="https://drive.google.com/file/d/141-XDrGvjnu5Hu2pRLnWKX72oBwuQob5/view" target="_blank"><span>📄</span><span>Table de routage - CORREIA.pdf</span><span class="ap-arrow">↗</span></a>
         </div>
       </div>
 
       <!-- AP 4.2 Invincible -->
       <div class="ap-block reveal">
-        <div class="ap-block-header">
-          <span class="ap-num-label">AP 4.2</span>
-          <span class="ap-name">Invincible</span>
-        </div>
-        <div class="ap-todo">
-          <strong>Documents à venir</strong>
-          Les fichiers de cette AP seront ajoutés prochainement.
-        </div>
+        <div class="ap-block-header"><span class="ap-num-label">AP 4.2</span><span class="ap-name">Invincible</span></div>
+        <div class="ap-todo"><strong>Documents à venir</strong>Les fichiers de cette AP seront ajoutés prochainement.</div>
       </div>
 
     </div>
@@ -1074,15 +1024,15 @@
       </style>
 
       <!-- Bouton PDF tableau compétences -->
-      <a class="comp-pdf-cta reveal" href="#" style="pointer-events:none;opacity:0.6">
+      <a class="comp-pdf-cta reveal ready" href="https://docs.google.com/spreadsheets/d/1QIYtgwdSLMUnD7gyao7JRBZgXaKYosEi/edit" target="_blank" style="">
         <div class="comp-pdf-cta-left">
           <div class="comp-pdf-icon2">📊</div>
           <div class="comp-pdf-info">
             <strong>Tableau de synthèse des compétences</strong>
-            <span>Upload le fichier dans ton GitHub puis donne-moi le chemin pour activer ce bouton</span>
+            <span>Cliquez pour ouvrir le tableau de synthèse</span>
           </div>
         </div>
-        <span class="comp-pdf-badge">À venir</span>
+        <span class="comp-pdf-badge" style="background:rgba(26,86,240,0.1);color:var(--accent)">Ouvrir ↗</span>
       </a>
 
     </div>
